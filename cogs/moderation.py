@@ -304,7 +304,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** has been banned. Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "🔨 Ban", user, interaction.user, reason, case_num=case_num
+            interaction.guild, "⚔️ Ban", user, interaction.user, reason, case_num=case_num
         )
 
     # ────────────────────────────────────────────────────────────────────────────
@@ -343,7 +343,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** softbanned (messages deleted). Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "🔨 Softban", user, interaction.user, reason,
+            interaction.guild, "⚔️ Softban", user, interaction.user, reason,
             case_num=case_num, color=COL_YELLOW,
         )
 
@@ -382,7 +382,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** (`{uid}`) hardbanned. Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "🔨 Hardban", user, interaction.user, reason, case_num=case_num
+            interaction.guild, "⚔️ Hardban", user, interaction.user, reason, case_num=case_num
         )
 
     # ────────────────────────────────────────────────────────────────────────────
@@ -443,7 +443,7 @@ class Moderation(commands.Cog):
             )
         )
         await self._log_mod_action(
-            interaction.guild, "⏱️ Tempban", user, interaction.user, reason,
+            interaction.guild, "🌑 Tempban", user, interaction.user, reason,
             duration=secs, case_num=case_num,
         )
 
@@ -488,7 +488,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{ban_entry.user}** has been unbanned.")
         )
         await self._log_mod_action(
-            interaction.guild, "✅ Unban", ban_entry.user, interaction.user,
+            interaction.guild, "✨ Unban", ban_entry.user, interaction.user,
             reason, color=COL_GREEN,
         )
 
@@ -530,7 +530,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** has been kicked. Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "👢 Kick", user, interaction.user, reason,
+            interaction.guild, "💨 Kick", user, interaction.user, reason,
             case_num=case_num, color=COL_YELLOW,
         )
 
@@ -581,7 +581,7 @@ class Moderation(commands.Cog):
             )
         )
         await self._log_mod_action(
-            interaction.guild, "⏰ Timeout", user, interaction.user, reason,
+            interaction.guild, "🕯️ Timeout", user, interaction.user, reason,
             duration=secs, case_num=case_num, color=COL_YELLOW,
         )
 
@@ -671,7 +671,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** muted{dur_str}. Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "🔇 Mute", user, interaction.user, reason,
+            interaction.guild, "🌑 Mute", user, interaction.user, reason,
             duration=secs, case_num=case_num, color=COL_YELLOW,
         )
 
@@ -853,7 +853,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** has been jailed. Case #{case_num}")
         )
         await self._log_mod_action(
-            interaction.guild, "🔒 Jail", user, interaction.user, reason, case_num=case_num
+            interaction.guild, "⛓️ Jail", user, interaction.user, reason, case_num=case_num
         )
 
     @app_commands.command(name="unjail", description="Release a member from jail")
@@ -886,7 +886,7 @@ class Moderation(commands.Cog):
             embed=success_embed(f"**{user}** has been released from jail.")
         )
         await self._log_mod_action(
-            interaction.guild, "🔓 Unjail", user, interaction.user, reason, color=COL_GREEN
+            interaction.guild, "🗝️ Unjail", user, interaction.user, reason, color=COL_GREEN
         )
 
     # ────────────────────────────────────────────────────────────────────────────
@@ -957,7 +957,7 @@ class Moderation(commands.Cog):
             )
         )
         await self._log_mod_action(
-            interaction.guild, "⚠️ Warn", user, interaction.user, reason,
+            interaction.guild, "🔮 Warn", user, interaction.user, reason,
             case_num=case_num, color=COL_YELLOW,
         )
 

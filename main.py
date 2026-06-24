@@ -618,7 +618,7 @@ class ModBot(commands.Bot):
         await self.change_presence(
             activity=discord.Activity(
                 type=discord.ActivityType.watching,
-                name=f"{len(self.guilds)} servers | /help"
+                name="over Whimsy ✨"
             )
         )
 
@@ -676,13 +676,13 @@ class ModBot(commands.Bot):
 
 # ── Embed helpers (shared across all cogs) ─────────────────────────────────────
 def success_embed(description: str, title: str = None) -> discord.Embed:
-    e = discord.Embed(description=f"✅ {description}", color=0x2ecc71)
+    e = discord.Embed(description=f"✨ {description}", color=0xF4C542)
     if title:
         e.title = title
     return e
 
 def error_embed(description: str, title: str = None) -> discord.Embed:
-    e = discord.Embed(description=f"❌ {description}", color=0xe74c3c)
+    e = discord.Embed(description=f"🔮 {description}", color=0x9B2335)
     if title:
         e.title = title
     return e
@@ -694,7 +694,7 @@ def info_embed(description: str, title: str = None) -> discord.Embed:
     return e
 
 def warn_embed(description: str, title: str = None) -> discord.Embed:
-    e = discord.Embed(description=f"⚠️ {description}", color=0xf39c12)
+    e = discord.Embed(description=f"⚠️ {description}", color=0xD4820A)
     if title:
         e.title = title
     return e
@@ -723,9 +723,9 @@ async def reload_cog(ctx, cog: str):
     """Owner-only: reload a specific cog without restarting."""
     try:
         await bot.reload_extension(f"cogs.{cog}")
-        await ctx.send(f"✅ Reloaded `cogs.{cog}`.")
+        await ctx.send(f"✨ Reloaded `cogs.{cog}`.")
     except Exception as e:
-        await ctx.send(f"❌ {e}")
+        await ctx.send(f"🔮 {e}")
 
 
 # ── Entry point ────────────────────────────────────────────────────────────────

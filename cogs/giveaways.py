@@ -33,7 +33,7 @@ class GiveawayEntryView(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(
-        label="🎉 Enter",
+        label="✨ Enter",
         style=discord.ButtonStyle.primary,
         custom_id="giveaway_enter",
     )
@@ -78,7 +78,7 @@ class Giveaways(commands.Cog):
         color = 0x2ecc71 if not ended else 0x95a5a6
 
         embed = discord.Embed(
-            title=f"🎉 {row['prize']}",
+            title=f"✨ {row['prize']}",
             description=row.get("description") or "",
             color=color,
         )
@@ -237,10 +237,10 @@ class Giveaways(commands.Cog):
             mention_str = ", ".join(winners)
             await safe_send(
                 ch,
-                content=f"🎉 Congratulations {mention_str}! You won **{row['prize']}**!",
+                content=f"✨ Congratulations {mention_str}! You won **{row['prize']}**!",
             )
         else:
-            await safe_send(ch, content=f"🎉 The giveaway for **{row['prize']}** has ended with no valid entries.")
+            await safe_send(ch, content=f"✨ The giveaway for **{row['prize']}** has ended with no valid entries.")
 
     # ────────────────────────────────────────────────────────────────────────────
     # /giveaway commands
@@ -404,7 +404,7 @@ class Giveaways(commands.Cog):
             try:
                 msg = await ch.fetch_message(mid)
                 embed = discord.Embed(
-                    title=f"~~🎉 {row['prize']}~~",
+                    title=f"~~✨ {row['prize']}~~",
                     description="This giveaway was cancelled.",
                     color=0x95a5a6,
                 )
@@ -461,7 +461,7 @@ class Giveaways(commands.Cog):
         if ch:
             await safe_send(
                 ch,
-                content=f"🎉 **Reroll!** New winner(s): {mentions} — Congratulations on **{row['prize']}**!"
+                content=f"✨ **Reroll!** New winner(s): {mentions} — Congratulations on **{row['prize']}**!"
             )
 
         await interaction.response.send_message(

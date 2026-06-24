@@ -602,7 +602,7 @@ class Utility(commands.Cog):
         latency = round(self.bot.latency * 1000)
         color = COL_GREEN if latency < 100 else COL_YELLOW if latency < 200 else 0xe74c3c
         embed = discord.Embed(
-            title="🏓 Pong!",
+            title="✨ Pong!",
             description=f"**Websocket:** `{latency}ms`",
             color=color,
         )
@@ -710,7 +710,7 @@ class Utility(commands.Cog):
 
         # Overview
         embed = discord.Embed(
-            title="📖 ModBot Help",
+            title="🔮 Whimsy — Help",
             description=(
                 "A full-featured moderation bot.\n"
                 "Use `/help [category]` for detailed command lists.\n\n"

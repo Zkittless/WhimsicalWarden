@@ -228,7 +228,7 @@ class Security(commands.Cog):
         owner = guild.owner
         if owner and success:
             embed = discord.Embed(
-                title="🚨 Antinuke Triggered",
+                title="🔮 Antinuke Triggered",
                 description=(
                     f"**Module:** `{module}`\n"
                     f"**Actor:** {member.mention} `{member}` ({member.id})\n"
@@ -242,7 +242,7 @@ class Security(commands.Cog):
 
         # Log to mod channel
         log_e = log_embed(
-            action=f"🚨 Antinuke — {module.title()}",
+            action=f"⚔️ Antinuke — {module.title()}",
             user=member,
             moderator=guild.me,
             reason=description,
@@ -469,7 +469,7 @@ class Security(commands.Cog):
                 owner = guild.owner
                 if owner:
                     embed = discord.Embed(
-                        title="🚨 Raid Detected",
+                        title="🌑 Raid Detected",
                         description=(
                             f"**{join_count} accounts** joined within 10 seconds!\n\n"
                             f"Threshold: `{cfg['massjoin_thresh']}`\n"
@@ -716,7 +716,7 @@ class Security(commands.Cog):
 
         status = "✅ Enabled" if (cfg and cfg["enabled"]) else "❌ Disabled"
         embed = discord.Embed(
-            title="🛡️ Antinuke Configuration",
+            title="🔮 Antinuke Configuration",
             color=0x5865F2,
         )
         embed.add_field(name="Status", value=status, inline=False)
@@ -926,7 +926,7 @@ class Security(commands.Cog):
                 ephemeral=True,
             )
 
-        embed = discord.Embed(title="🔰 Antiraid Configuration", color=0x5865F2)
+        embed = discord.Embed(title="✨ Antiraid Configuration", color=0x5865F2)
         embed.add_field(
             name="Mass Join",
             value=(

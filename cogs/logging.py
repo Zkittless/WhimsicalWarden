@@ -162,7 +162,7 @@ class Logging(commands.Cog):
             return
 
         embed = discord.Embed(
-            title="🗑️ Message Deleted",
+            title="🌑 Message Deleted",
             color=0xe74c3c,
             timestamp=datetime.now(timezone.utc),
         )
@@ -188,7 +188,7 @@ class Logging(commands.Cog):
             return
 
         embed = discord.Embed(
-            title="✏️ Message Edited",
+            title="🔮 Message Edited",
             color=0xf39c12,
             timestamp=datetime.now(timezone.utc),
         )
@@ -205,7 +205,7 @@ class Logging(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         embed = discord.Embed(
-            title="➕ Member Joined",
+            title="✨ Member Joined",
             color=0x2ecc71,
             timestamp=datetime.now(timezone.utc),
         )
@@ -218,7 +218,7 @@ class Logging(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         embed = discord.Embed(
-            title="➖ Member Left",
+            title="💨 Member Left",
             color=0xe74c3c,
             timestamp=datetime.now(timezone.utc),
         )
@@ -233,7 +233,7 @@ class Logging(commands.Cog):
     async def on_member_update(self, before: discord.Member, after: discord.Member):
         if before.roles == after.roles and before.nick == after.nick:
             return
-        embed = discord.Embed(title="👤 Member Updated", color=0x3498db, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🌟 Member Updated", color=0x3498db, timestamp=datetime.now(timezone.utc))
         embed.set_author(name=str(after), icon_url=after.display_avatar.url)
         embed.add_field(name="User", value=f"{after.mention} ({after.id})", inline=False)
 
@@ -258,13 +258,13 @@ class Logging(commands.Cog):
         embed = discord.Embed(color=0x9b59b6, timestamp=datetime.now(timezone.utc))
         embed.set_author(name=str(member), icon_url=member.display_avatar.url)
         if before.channel is None:
-            embed.title = "🔊 Joined Voice"
+            embed.title = "🎵 Joined Voice"
             embed.add_field(name="Channel", value=after.channel.mention)
         elif after.channel is None:
-            embed.title = "🔇 Left Voice"
+            embed.title = "💨 Left Voice"
             embed.add_field(name="Channel", value=before.channel.mention)
         else:
-            embed.title = "🔀 Moved Voice"
+            embed.title = "🌀 Moved Voice"
             embed.add_field(name="From", value=before.channel.mention, inline=True)
             embed.add_field(name="To", value=after.channel.mention, inline=True)
         await self.send_log(member.guild, "voice", embed)
@@ -273,14 +273,14 @@ class Logging(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_create(self, role: discord.Role):
-        embed = discord.Embed(title="✅ Role Created", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="✨ Role Created", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Role", value=f"{role.mention} ({role.id})", inline=True)
         embed.add_field(name="Color", value=str(role.color), inline=True)
         await self.send_log(role.guild, "roles", embed)
 
     @commands.Cog.listener()
     async def on_guild_role_delete(self, role: discord.Role):
-        embed = discord.Embed(title="🗑️ Role Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🌑 Role Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Role", value=f"`{role.name}` ({role.id})", inline=True)
         await self.send_log(role.guild, "roles", embed)
 
@@ -295,7 +295,7 @@ class Logging(commands.Cog):
             changes.append("Permissions changed")
         if not changes:
             return
-        embed = discord.Embed(title="✏️ Role Updated", color=0xf39c12, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🔮 Role Updated", color=0xf39c12, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Role", value=after.mention, inline=True)
         embed.add_field(name="Changes", value="\n".join(changes), inline=False)
         await self.send_log(after.guild, "roles", embed)
@@ -304,14 +304,14 @@ class Logging(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_channel_create(self, channel: discord.abc.GuildChannel):
-        embed = discord.Embed(title="✅ Channel Created", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="✨ Channel Created", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Channel", value=f"{channel.mention} ({channel.id})", inline=True)
         embed.add_field(name="Type", value=str(channel.type), inline=True)
         await self.send_log(channel.guild, "channels", embed)
 
     @commands.Cog.listener()
     async def on_guild_channel_delete(self, channel: discord.abc.GuildChannel):
-        embed = discord.Embed(title="🗑️ Channel Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🌑 Channel Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Channel", value=f"`#{channel.name}` ({channel.id})", inline=True)
         await self.send_log(channel.guild, "channels", embed)
 
@@ -319,7 +319,7 @@ class Logging(commands.Cog):
 
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
-        embed = discord.Embed(title="🔗 Invite Created", color=0x3498db, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🌿 Invite Created", color=0x3498db, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Code", value=invite.code, inline=True)
         embed.add_field(name="Creator", value=str(invite.inviter), inline=True)
         embed.add_field(name="Channel", value=invite.channel.mention if invite.channel else "—", inline=True)
@@ -328,7 +328,7 @@ class Logging(commands.Cog):
 
     @commands.Cog.listener()
     async def on_invite_delete(self, invite: discord.Invite):
-        embed = discord.Embed(title="🔗 Invite Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
+        embed = discord.Embed(title="🌿 Invite Deleted", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
         embed.add_field(name="Code", value=invite.code, inline=True)
         await self.send_log(invite.guild, "invites", embed)
 
@@ -343,12 +343,12 @@ class Logging(commands.Cog):
         removed = [e for eid, e in before_ids.items() if eid not in after_ids]
 
         if added:
-            embed = discord.Embed(title="✅ Emoji Added", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
+            embed = discord.Embed(title="✨ Emoji Added", color=0x2ecc71, timestamp=datetime.now(timezone.utc))
             embed.add_field(name="Emojis", value=" ".join(str(e) for e in added[:10]), inline=False)
             await self.send_log(guild, "emojis", embed)
 
         if removed:
-            embed = discord.Embed(title="🗑️ Emoji Removed", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
+            embed = discord.Embed(title="🌑 Emoji Removed", color=0xe74c3c, timestamp=datetime.now(timezone.utc))
             embed.add_field(name="Emojis", value=", ".join(f"`:{e.name}:`" for e in removed[:10]), inline=False)
             await self.send_log(guild, "emojis", embed)
 

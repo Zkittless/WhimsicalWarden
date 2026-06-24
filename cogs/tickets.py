@@ -233,7 +233,7 @@ class Tickets(commands.Cog):
         # Send greeting
         greeting = option["greeting"] if option and option.get("greeting") else "A staff member will be with you shortly."
         embed = discord.Embed(
-            title="🎫 Ticket Opened",
+            title="✨ Ticket Opened",
             description=f"{member.mention} — {greeting}",
             color=COL_BLUE,
             timestamp=datetime.now(timezone.utc),
@@ -290,7 +290,7 @@ class Tickets(commands.Cog):
                     pass
 
         embed = discord.Embed(
-            title="🔒 Ticket Closed",
+            title="🌑 Ticket Closed",
             description="This ticket has been closed. Staff can reopen or delete it below.",
             color=0xe74c3c,
             timestamp=datetime.now(timezone.utc),
@@ -362,7 +362,7 @@ class Tickets(commands.Cog):
             pass
 
         embed = discord.Embed(
-            title="🔓 Ticket Reopened",
+            title="✨ Ticket Reopened",
             color=0x2ecc71,
             timestamp=datetime.now(timezone.utc),
         )
@@ -466,7 +466,7 @@ class Tickets(commands.Cog):
         open_btn = discord.ui.Button(
             label="Open Ticket",
             style=discord.ButtonStyle.primary,
-            emoji="🎫",
+            emoji="✨",
             custom_id=f"ticket_panel_{name.replace(' ', '_').lower()}",
         )
 

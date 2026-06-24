@@ -132,7 +132,7 @@ class AutoMod(commands.Cog):
 
         # Log to mod log
         embed = discord.Embed(
-            title=f"🤖 AutoMod — {reason}",
+            title=f"✨ AutoMod — {reason}",
             description=(
                 f"**User:** {member.mention} `{member}` ({member.id})\n"
                 f"**Channel:** {message.channel.mention}\n"

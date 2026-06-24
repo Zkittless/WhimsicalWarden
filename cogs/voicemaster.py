@@ -358,7 +358,7 @@ class VoiceMaster(commands.Cog):
 
         # Post the control panel interface
         embed = discord.Embed(
-            title="🎙️ VoiceMaster — Channel Controls",
+            title="✨ VoiceMaster — Channel Controls",
             description=(
                 "Use the buttons below to control your temporary voice channel.\n\n"
                 "**🔒 Lock** — Only allowed users can join\n"

@@ -17,26 +17,26 @@ from discord import app_commands
 from discord.ext import commands
 
 
-# ── Colour constants ────────────────────────────────────────────────────────────
-COL_GREEN   = 0x2ecc71
-COL_RED     = 0xe74c3c
-COL_BLUE    = 0x5865F2
-COL_YELLOW  = 0xf39c12
-COL_PURPLE  = 0x9b59b6
-COL_ORANGE  = 0xe67e22
-COL_BLURPLE = 0x7289DA
+# ── Colour constants — Whimsy mythical palette ──────────────────────────────────
+COL_GREEN   = 0xF4C542  # soft gold  — success
+COL_RED     = 0x9B2335  # deep crimson — error
+COL_BLUE    = 0x7B4FA6  # arcane purple — info
+COL_YELLOW  = 0xD4820A  # amber — warning
+COL_PURPLE  = 0x5B2D8E  # deep violet
+COL_ORANGE  = 0xC0622A  # ember orange
+COL_BLURPLE = 0x7B4FA6  # matches info
 
 
 # ── Embed helpers ───────────────────────────────────────────────────────────────
 def success_embed(description: str, title: str = None) -> discord.Embed:
-    e = discord.Embed(description=f"✅  {description}", color=COL_GREEN)
+    e = discord.Embed(description=f"✨  {description}", color=COL_GREEN)
     if title:
         e.title = title
     return e
 
 
 def error_embed(description: str, title: str = None) -> discord.Embed:
-    e = discord.Embed(description=f"❌  {description}", color=COL_RED)
+    e = discord.Embed(description=f"🔮  {description}", color=COL_RED)
     if title:
         e.title = title
     return e
