@@ -614,6 +614,7 @@ class Utility(commands.Cog):
     @app_commands.describe(category="Command category to view")
     @app_commands.choices(
         category=[
+            app_commands.Choice(name="Setup (Start Here)", value="setup"),
             app_commands.Choice(name="Moderation",    value="mod"),
             app_commands.Choice(name="Security",      value="sec"),
             app_commands.Choice(name="AutoMod",       value="automod"),
@@ -631,6 +632,23 @@ class Utility(commands.Cog):
         category: Optional[str] = None,
     ):
         categories = {
+            "setup": (
+                "🔧 First-Time Setup",
+                "Run these in order after inviting the bot:\n\n"
+                "1️⃣  /setup moderation\n"
+                "    Creates the mod-log channel, jail role, and jail channel.\n\n"
+                "2️⃣  /setup mute\n"
+                "    Creates the Muted, Image Muted, and Reaction Muted roles.\n\n"
+                "3️⃣  /antinuke enable\n"
+                "    Turns on server protection. Then use:\n"
+                "    /antinuke module <ban|kick|role|channel|etc> on\n\n"
+                "4️⃣  /bind staff @role\n"
+                "    Sets which role(s) can use mod commands.\n\n"
+                "5️⃣  /log add #channel all\n"
+                "    Routes all log events to a channel.\n\n"
+                "Everything else (tickets, leveling, giveaways, voicemaster)\n"
+                "is optional and can be configured whenever you're ready."
+            ),
             "mod": (
                 "⚔️ Moderation",
                 "/ban /softban /hardban /tempban /unban\n"
@@ -714,6 +732,7 @@ class Utility(commands.Cog):
             description=(
                 "A full-featured moderation bot.\n"
                 "Use `/help [category]` for detailed command lists.\n\n"
+                "**⚠️ New here? Start with `/help Setup`**\n\n"
                 + "\n".join(
                     f"**{title}**"
                     for _, (title, _) in categories.items()
