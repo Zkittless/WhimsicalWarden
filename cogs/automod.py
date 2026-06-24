@@ -12,7 +12,7 @@ import logging
 import re
 import time
 from collections import defaultdict
-from typing import Optional
+from typing import Optional, Union
 from urllib.parse import urlparse
 
 import discord
@@ -810,10 +810,6 @@ class AutoMod(commands.Cog):
         ]), inline=False)
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
-
-
-# Need this import for Union type hint
-from typing import Union
 
 
 async def setup(bot):

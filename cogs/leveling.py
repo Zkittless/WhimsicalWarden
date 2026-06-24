@@ -10,7 +10,7 @@ from __future__ import annotations
 import logging
 import math
 import random
-from typing import Optional
+from typing import Optional, Union
 
 import discord
 from discord import app_commands
@@ -509,10 +509,6 @@ class Leveling(commands.Cog):
         await interaction.response.send_message(
             embed=success_embed(f"**{member.display_name}**'s XP reset."), ephemeral=True
         )
-
-
-# Need this for Union type hint
-from typing import Union
 
 
 async def setup(bot):

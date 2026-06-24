@@ -94,15 +94,26 @@ class Logging(commands.Cog):
         )
 
     @log_group.command(name="ignore", description="Ignore a member or channel from logs")
-    @app_commands.describe(target="Member or channel to ignore/unignore")
+    @app_commands.describe(
+        member="Member to ignore/unignore",
+        channel="Channel to ignore/unignore",
+    )
     @app_commands.checks.has_permissions(manage_guild=True)
     async def log_ignore(
         self,
         interaction: discord.Interaction,
-        target: Union[discord.Member, discord.TextChannel],
+        member: Optional[discord.Member] = None,
+        channel: Optional[discord.TextChannel] = None,
     ):
-        gid = interaction.guild.id
+        target = member or channel
+        if not target:
+            return await interaction.response.send_message(
+                embed=error_embed("Provide a member or channel to ignore."), ephemeral=True
+            )
+
+        gid    = interaction.guild.id
         t_type = "member" if isinstance(target, discord.Member) else "channel"
+
         async with self.bot.db.execute(
             "SELECT 1 FROM log_ignore WHERE guild_id=? AND target_id=?", (gid, target.id)
         ) as cur:
