@@ -74,7 +74,7 @@ class Utility(commands.Cog):
                     await user.send(embed=embed)
                 except (discord.Forbidden, discord.HTTPException):
                     # Try channel
-                    if row.get("channel_id"):
+                    if row["channel_id"]:
                         ch = self.bot.get_channel(row["channel_id"])
                         if ch:
                             await safe_send(ch, content=f"{user.mention}", embed=embed)

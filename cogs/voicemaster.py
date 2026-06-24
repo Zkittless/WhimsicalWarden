@@ -248,9 +248,10 @@ class VoiceMaster(commands.Cog):
         async with self.bot.db.execute(
             "SELECT * FROM voicemaster_config WHERE guild_id=?", (guild.id,)
         ) as cur:
-            cfg = await cur.fetchone()
-        if not cfg:
+            row = await cur.fetchone()
+        if not row:
             return
+        cfg = dict(row)
 
         # ── Joined hub channel → create temp VC ─────────────────────────────
         if after.channel and after.channel.id == cfg["hub_channel_id"]:

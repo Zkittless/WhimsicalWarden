@@ -178,7 +178,7 @@ class Tickets(commands.Cog):
         category    = guild.get_channel(category_id) if category_id else None
 
         # Check required role
-        if option and option.get("required_role_id"):
+        if option and option["required_role_id"]:
             req_role = guild.get_role(option["required_role_id"])
             if req_role and req_role not in member.roles:
                 return await interaction.response.send_message(
@@ -231,7 +231,7 @@ class Tickets(commands.Cog):
         await db.commit()
 
         # Send greeting
-        greeting = option["greeting"] if option and option.get("greeting") else "A staff member will be with you shortly."
+        greeting = option["greeting"] if option and option["greeting"] else "A staff member will be with you shortly."
         embed = discord.Embed(
             title="✨ Ticket Opened",
             description=f"{member.mention} — {greeting}",
@@ -539,6 +539,10 @@ class Tickets(commands.Cog):
             except discord.HTTPException:
                 pass
 
+        # Delete options first (FK constraint), then the panel
+        await self.bot.db.execute(
+            "DELETE FROM ticket_options WHERE panel_id=?", (panel["id"],)
+        )
         await self.bot.db.execute(
             "DELETE FROM ticket_panels WHERE guild_id=? AND name=?", (gid, name)
         )
