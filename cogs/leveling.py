@@ -343,14 +343,24 @@ class Leveling(commands.Cog):
         )
 
     @leveling_group.command(name="ignore", description="Ignore a channel or role from earning XP")
-    @app_commands.describe(target="Channel or role to ignore/unignore")
+    @app_commands.describe(
+        channel="Channel to ignore/unignore",
+        role="Role to ignore/unignore",
+    )
     @app_commands.checks.has_permissions(manage_guild=True)
     async def lv_ignore(
         self,
         interaction: discord.Interaction,
-        target: Union[discord.TextChannel, discord.Role],
+        channel: Optional[discord.TextChannel] = None,
+        role: Optional[discord.Role] = None,
     ):
-        gid = interaction.guild.id
+        target = channel or role
+        if not target:
+            return await interaction.response.send_message(
+                embed=error_embed("Provide a channel or role to ignore."), ephemeral=True
+            )
+
+        gid    = interaction.guild.id
         t_type = "channel" if isinstance(target, discord.TextChannel) else "role"
 
         async with self.bot.db.execute(

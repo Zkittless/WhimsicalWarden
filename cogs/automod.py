@@ -745,13 +745,25 @@ class AutoMod(commands.Cog):
     # ── AutoMod ignore list ────────────────────────────────────────────────────
 
     @automod_group.command(name="ignore", description="Ignore a channel, role, or user from AutoMod")
-    @app_commands.describe(target="Channel, role, or member to ignore/unignore")
+    @app_commands.describe(
+        channel="Channel to ignore/unignore",
+        role="Role to ignore/unignore",
+        member="Member to ignore/unignore",
+    )
     @app_commands.checks.has_permissions(manage_guild=True)
     async def automod_ignore(
         self,
         interaction: discord.Interaction,
-        target: Union[discord.TextChannel, discord.Role, discord.Member],
+        channel: Optional[discord.TextChannel] = None,
+        role: Optional[discord.Role] = None,
+        member: Optional[discord.Member] = None,
     ):
+        target = channel or role or member
+        if not target:
+            return await interaction.response.send_message(
+                embed=error_embed("Provide a channel, role, or member to ignore."), ephemeral=True
+            )
+
         gid = interaction.guild.id
         if isinstance(target, discord.TextChannel):
             target_type = "channel"
